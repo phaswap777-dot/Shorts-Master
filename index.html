@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Video Generator</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: #020617;
+    }
+
+    header h1 {
+      font-size: 30px;
+      color: #38bdf8;
+    }
+
+    header p {
+      color: #94a3b8;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-top: 10px;
+      resize: none;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background: #38bdf8;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    .output {
+      margin-top: 15px;
+      background: #020617;
+      padding: 15px;
+      border-radius: 8px;
+      min-height: 80px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #020617;
+      color: #94a3b8;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>AI Video Generator</h1>
+  <p>Create videos using AI from your text</p>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>Enter Your Video Idea</h2>
+
+    <textarea id="inputText" placeholder="Write your video script here..."></textarea>
+
+    <select id="style">
+      <option value="horror">Horror</option>
+      <option value="motivation">Motivational</option>
+      <option value="story">Story</option>
+      <option value="comedy">Comedy</option>
+    </select>
+
+    <button onclick="generateVideo()">Generate Video Script</button>
+
+    <div class="output" id="output">
+      Output will appear here...
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 AI Video Tool | All Rights Reserved</p>
+</footer>
+
+<script>
+  function generateVideo() {
+    let text = document.getElementById("inputText").value;
+    let style = document.getElementById("style").value;
+    let output = document.getElementById("output");
+
+    if(text.trim() === "") {
+      output.innerHTML = "⚠️ Please enter some text first.";
+      return;
+    }
+
+    let result = "";
+
+    if(style === "horror") {
+      result = "🎬 Horror Script:\n\nDark night... " + text + " Suddenly something terrifying happens...";
+    }
+    else if(style === "motivation") {
+      result = "🔥 Motivational Script:\n\n" + text + " You can achieve anything if you never give up!";
+    }
+    else if(style === "story") {
+      result = "📖 Story:\n\nOnce upon a time... " + text;
+    }
+    else if(style === "comedy") {
+      result = "😂 Comedy Script:\n\n" + text + " And then something funny happens!";
+    }
+
+    output.innerText = result;
+  }
+</script>
+
+</body>
+</html>
